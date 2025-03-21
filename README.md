@@ -79,14 +79,4 @@ Validate your data models with dbt tests:
 dbt test --target databricks
 ```
 
-## Project Structure
 
-[Provide details about the project structure here]
-
-## Contributing
-
-[Add contribution guidelines here]
-
-## License
-
-[Add license information here]
