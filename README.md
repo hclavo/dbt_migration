@@ -1,51 +1,92 @@
-# dbt_migration
-POC to move data from snowflake to databricks for small and medium sized migrations and incremental migrations.
+# DBT Migration
 
+A proof of concept (POC) project for migrating data from Snowflake to Databricks. Designed for small to medium-sized migrations and incremental migrations.
 
----
+## Getting Started
 
-Getting Started
+### 1. Set Up Python Virtual Environment
 
-1. Set Up Python Virtual Environment
+Create and activate a virtual environment:
 
-# Create and activate a virtual environment
+```bash
+# Create virtual environment
 python -m venv venv
 
-source venv/bin/activate   # On Windows: venv\\Scripts\\activate
+# Activate virtual environment
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-2. Install requirements 
+### 2. Install Requirements
 
-#pip install in root folder
+Install the required packages:
 
+```bash
+# Run in the root folder
 pip install -r requirements.txt
+```
 
-3. Configure dbt profiles
+### 3. Configure dbt Profiles
 
-#edit ~/.dbt/profiles.yml with credentials
+Set up your dbt profiles with credentials:
 
+```bash
+# Create dbt directory if it doesn't exist
 mkdir -p ~/.dbt
 
+# Copy the sample profiles file
 cp profiles_sample.yml ~/.dbt/profiles.yml
 
-4. Test Connections
+# Edit the profiles file with your credentials
+# nano ~/.dbt/profiles.yml
+```
 
+### 4. Test Connections
+
+Verify your connections to both Snowflake and Databricks:
+
+```bash
+# Test Snowflake connection
 dbt debug --target snowflake
+
+# Test Databricks connection
 dbt debug --target databricks
+```
 
+### 5. Run dbt Models
 
-5. Run dbt models
+#### A. Create a View in Snowflake
 
-A. Create a view in Snowflake
+Example of using model names in the folders:
 
-example of using models name in the folders
-
+```bash
+# Run full refresh on Snowflake
 dbt run --select snowflake_table --full-refresh --target snowflake
+```
 
-incremental after
+#### B. Run Incremental Models in Databricks
 
+```bash
+# Run incremental models in Databricks
 dbt run --select orders_final --target databricks
+```
 
+### 6. Run dbt Tests
 
-6. Run dbt tests
+Validate your data models with dbt tests:
 
+```bash
+# Run tests on Databricks models
 dbt test --target databricks
+```
+
+## Project Structure
+
+[Provide details about the project structure here]
+
+## Contributing
+
+[Add contribution guidelines here]
+
+## License
+
+[Add license information here]
