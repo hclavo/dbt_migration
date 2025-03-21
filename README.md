@@ -67,7 +67,7 @@ dbt run --select snowflake_table --full-refresh --target snowflake
 
 ```bash
 # Run incremental models in Databricks
-dbt run --select orders_final --target databricks
+dbt run --select table_final --target databricks
 ```
 
 ### 6. Run dbt Tests
